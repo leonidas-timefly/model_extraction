@@ -256,6 +256,7 @@ def RESNET50(include_top=True, weights='vggface',
     if include_top:
         x = Flatten()(x)
         x = Dense(classes, activation='softmax', name='classifier')(x)
+
     else:
         if pooling == 'avg':
             x = GlobalAveragePooling2D()(x)
