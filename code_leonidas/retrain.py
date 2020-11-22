@@ -1,16 +1,15 @@
 from keras_vggface.vggface import VGGFace
 from keras.engine import Model
-from keras.layers import Flatten, Dense, Input, Activation
+from keras.layers import Flatten, Dense, Input, Activation, Dropout
 from keras.optimizers import SGD
 from keras.optimizers import RMSprop
 from keras.optimizers import Adam
 import numpy as np
 import tensorflow as tf
-from keras.layers import Dense, Dropout, Flatten
 
-config = tf.compat.v1.ConfigProto()
+config = tf.ConfigProto()
 config.gpu_options.allow_growth = True
-session = tf.compat.v1.Session(config=config)
+session = tf.Session(config=config)
 
 RetrainAllLayers = False
 newLayers = 1
@@ -108,7 +107,8 @@ print(result)
 custom_model.save('vggface-retrained.h5')
 '''
 
-model = VGGFace(model='vggface_resnet50', pooling='max', classes=target_class, include_top=False)
+model = VGGFace(model='resnet50', pooling='max', classes=target_class, include_top=False, input_shape=(224, 224, 3))
+print(model.layers)
 
 last_layer = model.get_layer('avg_pool').output
 
