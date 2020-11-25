@@ -16,9 +16,6 @@ newLayers = 1
 nb_class = 20
 target_class = 5
 
-# np.random.seed(int(sys.argv[1]))
-#newLayers = int(sys.argv[2])
-
 x_train_all = np.load('Datasets/UMtrainData.npy')
 y_train_all = np.load('Datasets/UMtrainLabel.npy')
 x_test_all = np.load('Datasets/UMtestData.npy')
@@ -118,6 +115,8 @@ x = Activation('softmax', name='fc1/softmax')(x)
 
 custom_model = Model(model.input, x)
 
+print(custom_model.layers)
+
 for layer in custom_model.layers:
     layer.trainable = True
 
@@ -126,10 +125,7 @@ if not RetrainAllLayers:
         layer.trainable = False
 
 custom_model.compile(optimizer=RMSprop(lr=1e-4), loss='categorical_crossentropy', metrics=['accuracy'])
-#custom_model.compile(optimizer=Adam(lr=1e-4), loss='categorical_crossentropy', metrics=['accuracy'])
-print("********")
 custom_model.fit(x=x_train, y=y_train, epochs=20, batch_size=32)
-print("+++++++++++++++++++")
 result = custom_model.evaluate(x_test, y_test)
 
 print("&&&")
