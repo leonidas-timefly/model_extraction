@@ -15,6 +15,9 @@ value_sum = np.array([0, 0, 0, 0, 0])
 
 for k in range(1, nb_class + 1):
     feature_value = np.load("feature_value/Vgg16/5/TrainFeatureValue" + str(k) + ".npy")
+    print(feature_value.shape)
+    while(1):
+        pass
     plt.xlabel('Feature Dimension')
     plt.ylabel('Feature Value')
     plt.title("Class " + str(k) + "/" + str(nb_class) + " Features Distribution")
