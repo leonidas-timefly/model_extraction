@@ -19,7 +19,7 @@ ax.set_ylabel('Ratio')
 ax.set_title('Data and Feature Proportion')
 ax.set_xticks(x)
 ax.set_xticklabels(labels)
-ax.legend()
+ax.legend(loc='lower right')
 
 
 def autolabel(rects):
