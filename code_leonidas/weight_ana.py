@@ -42,6 +42,7 @@ def get_max_min(child_path_set):
 
 #get_max_min(child_path_set = child_path_set)
 
+
 file_list = [
     ["1118.txt", "2894.txt", "2490.txt", "2840.txt", "1507.txt", "684.txt"],
     ["3969.txt", "3248.txt", "3033.txt", "1610.txt", "640.txt", "972.txt"],
@@ -65,14 +66,14 @@ def Draw_picture(ProPath, file_list):
                 for t in range(51):
                     print(x[t], y[k][t])
         plt.xlabel('Feature Value')
-        plt.ylabel('Probability Value')
+        plt.ylabel('Probability')
         plt.grid(linestyle=":", color="b")
         mark_list = ['X', 'v', 'o', 'x', 'd', '*']
         for k in range(len(file_list[num])):
             plt.plot(x, np.array(y[k]), label="C" + str(num + 1) + "-F" + str(k + 1), marker = mark_list[k], markersize = 3)
         plt.legend()
         #plt.gca().invert_xaxis()
-        plt.savefig("results/pictures/UMass/Vgg16/5/class" + str(num + 1) + ".jpg", dpi = 1200, bbox_inches = 'tight')
+        plt.savefig("results/pictures/UMass/Vgg16/5/class" + str(num + 1) + "test.jpg", dpi = 1800, bbox_inches = 'tight')
         plt.show()
         #plt.savefig('results/pictures/UMass/Vgg16/5/test.jpg')
 
