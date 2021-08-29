@@ -3,6 +3,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.interpolate import make_interp_spline
 import math
+from keras.preprocessing import image
+from keras_vggface import utils
 
 nb_class = 5
 
@@ -10,14 +12,42 @@ sample_gap = 250
 coeff_sample = np.array([0.0, 0.0, 0.0, 0.0, 0.0])
 x = np.arange(0, 25088, sample_gap)
 print(x.shape)
-
 value_sum = np.array([0, 0, 0, 0, 0])
 
-feature_value = np.load("feature_value/Vgg16/5/TrainFeatureValue20056" + str(1) + ".npy")
-feature_value = np.int(feature_value[0])
-plt.matshow(feature_value, cmap=plt.get_cmap('Dark2'))
+feature_value1 = np.load("Train_data_set/UMass/train_set_class" + str(1) + ".npy")
+feature_value2 = np.load("Train_data_set/UMass/train_set_class" + str(2) + ".npy")
+feature_value3 = np.load("Train_data_set/UMass/train_set_class" + str(3) + ".npy")
+feature_value4 = np.load("Train_data_set/UMass/train_set_class" + str(4) + ".npy")
+feature_value5 = np.load("Train_data_set/UMass/train_set_class" + str(5) + ".npy")
 
-plt.show()
+for k in range(0, 20):
+    list1 = feature_value5[k].tolist()
+    img = utils.postprocess_input(list1, version=1)
+    img = image.array_to_img(img)
+    image.save_img("results/pictures/UMass/Vgg16/5/class5/class" + str(k) + "photo.jpg", img)
+
+
+
+
+
+feature_value1 = feature_value1.astype(int)
+feature_value2 = feature_value2.astype(int)
+feature_value3 = feature_value3.astype(int)
+feature_value4 = feature_value4.astype(int)
+feature_value5 = feature_value5.astype(int)
+eff = 2
+
+
+'''
+for k in range(0, 20):
+    feature_value = [feature_value5[k][100 * (eff - 1):100 * eff + 1]]
+    print(feature_value)
+    plt.matshow(feature_value, cmap=plt.cm.binary)  # 这里设置颜色为红色，也可以设置其他颜色
+    #plt.title("matrix A")
+    plt.yticks([])
+    plt.savefig("results/pictures/UMass/Vgg16/5/class5/class" + str(k) + "hotpot.jpg", dpi=1800, bbox_inches='tight')
+    plt.show()
+'''
 
 while(1):
     pass
@@ -43,3 +73,31 @@ for k in range(1, nb_class + 1):
     plt.legend()
     plt.savefig("results/pictures/UMass/Vgg16/5/class" + str(k) + "ffeature.jpg", dpi=1800, bbox_inches='tight')
     plt.show()
+
+feature_value = np.load("feature_value/Vgg16/5/TrainFeatureValue20056" + str(1) + ".npy")
+feature_value = feature_value[0].astype(int)
+print(max(feature_value))
+print(feature_value)
+print(feature_value.shape)
+temp = []
+feature_value = [feature_value]
+
+A = np.arange(0, 100).reshape(1, 100)
+print(A)
+print(A.shape)
+plt.matshow(feature_value, cmap=plt.cm.Reds)#这里设置颜色为红色，也可以设置其他颜色
+plt.title("matrix A")
+
+plt.show()
+
+while(1):
+    pass
+#ax.imshow(feature_value,cmap='coolwarm')
+
+plt.matshow(feature_value, cmap=plt.get_cmap('Dark2'))
+
+
+plt.show()
+
+while(1):
+    pass
