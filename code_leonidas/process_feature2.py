@@ -14,6 +14,7 @@ x = np.arange(0, 25088, sample_gap)
 print(x.shape)
 value_sum = np.array([0, 0, 0, 0, 0])
 
+'''
 feature_value1 = np.load("Train_data_set/UMass/train_set_class" + str(1) + ".npy")
 feature_value2 = np.load("Train_data_set/UMass/train_set_class" + str(2) + ".npy")
 feature_value3 = np.load("Train_data_set/UMass/train_set_class" + str(3) + ".npy")
@@ -26,9 +27,14 @@ for k in range(0, 20):
     img = image.array_to_img(img)
     image.save_img("results/pictures/UMass/Vgg16/5/class5/class" + str(k) + "photo.jpg", img)
 
+'''
 
 
-
+feature_value1 = np.load("feature_value/Vgg16/5/TrainFeatureValue20056" + str(1) + ".npy")
+feature_value2 = np.load("feature_value/Vgg16/5/TrainFeatureValue20056" + str(2) + ".npy")
+feature_value3 = np.load("feature_value/Vgg16/5/TrainFeatureValue20056" + str(3) + ".npy")
+feature_value4 = np.load("feature_value/Vgg16/5/TrainFeatureValue20056" + str(4) + ".npy")
+feature_value5 = np.load("feature_value/Vgg16/5/TrainFeatureValue20056" + str(5) + ".npy")
 
 feature_value1 = feature_value1.astype(int)
 feature_value2 = feature_value2.astype(int)
@@ -38,16 +44,20 @@ feature_value5 = feature_value5.astype(int)
 eff = 2
 
 
-'''
 for k in range(0, 20):
     feature_value = [feature_value5[k][100 * (eff - 1):100 * eff + 1]]
+    feature_value = [feature_value[0], feature_value[0], feature_value[0], feature_value[0]]
+    plt.matshow(feature_value, cmap=plt.cm.binary)
     print(feature_value)
-    plt.matshow(feature_value, cmap=plt.cm.binary)  # 这里设置颜色为红色，也可以设置其他颜色
+    plt.colorbar(shrink=1)
+
     #plt.title("matrix A")
     plt.yticks([])
+
+    #lines = plt.matshow(feature_value, cmap=plt.cm.binary)  # 这里设置颜色为红色，也可以设置其他颜色
     plt.savefig("results/pictures/UMass/Vgg16/5/class5/class" + str(k) + "hotpot.jpg", dpi=1800, bbox_inches='tight')
     plt.show()
-'''
+
 
 while(1):
     pass
