@@ -1,0 +1,15 @@
+Ankle_boot  Bag  Coat  Dress  Pullover  Sandal  Shirt  Sneaker  T-shirt_or_top  Trouser
+
+/root/model_extraction/code_leonidas/Datasets/FashionMnist/traindata
+
+np.save('Datasets/FashionMnist-1/Mnist-trainData-balanced-1.npy', data)
+
+Mnist-testData-balanced.npy  Mnist-testLabel-balanced.npy  Mnist-trainData-balanced.npy  Mnist-trainLabel-balanced.npy
+
+Mnist-testLabel-balanced-1.npy
+
+
+
+
+
+Ankle_boot  Bag  Coat  Dress  Pullover  Sandal  Shirt  Sneaker  T-shirt_or_top  Trouser
