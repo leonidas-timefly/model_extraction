@@ -62,7 +62,7 @@ plt.ylabel("Fidelity")
 # 显示图标题
 #plt.title("Fedility Viriation")
 #plt.xlim(0.1,0.9)
-plt.ylim(0.45,1.0)
+plt.ylim(0.59,1.0)
 plt.xlim(9,90)
 
 
