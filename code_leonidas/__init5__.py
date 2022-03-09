@@ -56,15 +56,16 @@ for k in range(1):
 
 x = np.arange(10, 90, 1)
 
-plt.xlabel("Crop Rate(%)")
+plt.xlabel("Cutting Rate(%)", fontsize = 16)
 # 显示纵轴标签
-plt.ylabel("Fidelity")
+plt.ylabel("Fidelity", fontsize = 16)
 # 显示图标题
 #plt.title("Fedility Viriation")
 #plt.xlim(0.1,0.9)
-plt.ylim(0.59,1.0)
+plt.ylim(0.59,1.01)
 plt.xlim(9,90)
-
+plt.xticks(size=16)
+plt.yticks(size=16)
 
 f1 = np.polyfit(x, r1, 4)
 f2 = np.polyfit(x, r2, 4)
@@ -81,8 +82,8 @@ plt.bar(x, r2, alpha=0.6, width=1, edgecolor = "black", label = "NABOC=6")
 plt.bar(x, r1, alpha=0.6, width=1, color = "#fcb001", edgecolor = "black", label = "NABOC=3")
 
 
-plt.legend(loc=1)
+plt.legend(loc=3, fontsize = 16)
 
-plt.savefig("5-layer.jpg", dpi=1800, bbox_inches='tight')
+plt.savefig("5-layer.png", dpi=1800, bbox_inches='tight')
 
 plt.show()
